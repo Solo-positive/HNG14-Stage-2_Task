@@ -1,0 +1,289 @@
+/* ============================================================
+   CSS Custom Properties — Light & Dark Themes
+   ============================================================ */
+:root,
+[data-theme="light"] {
+  --color-bg: #f8f8fb;
+  --color-card: #ffffff;
+  --color-card-hover: #f9fafe;
+  --color-sidebar: #373b53;
+  --color-text-primary: #0c0e16;
+  --color-text-secondary: #7e88c3;
+  --color-text-muted: #888eb0;
+  --color-border: #dfe3fa;
+  --color-input-bg: #ffffff;
+  --color-input-border: #dfe3fa;
+  --color-grand-total-bg: #373b53;
+  --badge-draft-bg: rgba(55, 59, 83, 0.06);
+  --badge-draft-color: #373b53;
+}
+
+[data-theme="dark"] {
+  --color-bg: #141625;
+  --color-card: #1e2139;
+  --color-card-hover: #252945;
+  --color-sidebar: #373b53;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #dde3fa;
+  --color-text-muted: #888eb0;
+  --color-border: #252945;
+  --color-input-bg: #1e2139;
+  --color-input-border: #252945;
+  --color-grand-total-bg: #0c0e16;
+  --badge-draft-bg: rgba(223, 227, 250, 0.06);
+  --badge-draft-color: #dde3fa;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "League Spartan", system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+}
+button {
+  font-family: inherit;
+}
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  padding-left: 72px; /* reserve space for fixed sidebar without adding to outer width */
+  box-sizing: border-box;
+  min-height: 100vh;
+  transition: padding 0.3s;
+}
+
+/* ============================================================
+   Page Content Container
+   ============================================================ */
+.page-container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 5rem;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    opacity 0.2s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #7c5dfa;
+  outline-offset: 3px;
+}
+
+.btn--primary {
+  background: #7c5dfa;
+  color: #fff;
+}
+.btn--primary:hover {
+  background: #9277ff;
+}
+
+.btn--secondary {
+  background: var(--color-border);
+  color: var(--color-text-secondary);
+}
+.btn--secondary:hover {
+  background: var(--color-card-hover);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .btn--secondary {
+  background: #252945;
+  color: #dde3fa;
+}
+[data-theme="dark"] .btn--secondary:hover {
+  background: #ffffff;
+  color: #0c0e16;
+}
+
+.btn--danger {
+  background: #ec5757;
+  color: #fff;
+}
+.btn--danger:hover {
+  background: #ff9797;
+}
+
+.btn--dark {
+  background: var(--color-card);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+[data-theme="dark"] .btn--dark {
+  background: #252945;
+  color: #dde3fa;
+  border-color: transparent;
+}
+.btn--dark:hover {
+  opacity: 0.8;
+}
+
+.btn--ghost {
+  background: var(--color-border);
+  color: var(--color-text-secondary);
+  width: 100%;
+}
+[data-theme="dark"] .btn--ghost {
+  background: #252945;
+  color: #dde3fa;
+}
+.btn--ghost:hover {
+  opacity: 0.8;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.btn--icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  background: #7c5dfa;
+  color: #fff;
+}
+.btn--icon:hover {
+  background: #9277ff;
+}
+
+/* ============================================================
+   Empty State
+   ============================================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 1.5rem;
+  gap: 2rem;
+}
+
+.empty-state__img {
+  width: 200px;
+  height: 200px;
+}
+
+.empty-state__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.empty-state__body {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  max-width: 220px;
+}
+
+.empty-state__body strong {
+  display: block;
+  color: #7c5dfa;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   Responsive Layout
+   ============================================================ */
+@media (max-width: 768px) {
+  .app-main {
+    padding-left: 0;
+    margin-top: 72px;
+  }
+
+  .page-container {
+    padding: 2rem 1.5rem 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 1.5rem 1rem 5rem;
+  }
+}

@@ -1,0 +1,154 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  background: #373b53;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 300; /* increased so sidebar isn't partially covered by page content */
+  overflow: hidden;
+}
+
+.sidebar__logo {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(180deg, #7c5dfa 0%, #9277ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 20px 20px 0;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar__logo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px 0 0 0;
+}
+
+.sidebar__logo-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding-bottom: 1.5rem;
+}
+
+.sidebar__icon-btn {
+  background: none;
+  border: none;
+  color: #858bb2;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  width: 48px;
+  height: 48px;
+}
+
+.sidebar__icon-btn:hover {
+  color: #fff;
+}
+
+.sidebar__icon-btn:focus-visible {
+  outline: 2px solid #7c5dfa;
+  outline-offset: 2px;
+}
+
+.sidebar__divider {
+  width: 100%;
+  height: 1px;
+  background: #494e6e;
+  margin: 0.5rem 0;
+}
+
+.sidebar__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #9277ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.sidebar__avatar:hover {
+  border-color: #7c5dfa;
+}
+
+/* Tablet / horizontal layout */
+@media (max-width: 768px) {
+  .sidebar {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: 72px;
+    border-radius: 0 0 20px 20px;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .sidebar__logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 0 0 20px 0;
+    flex-shrink: 0;
+  }
+
+  .sidebar__logo::after {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 50%;
+    height: 100%;
+    width: 50%;
+    border-radius: 0 0 20px 0;
+  }
+
+  .sidebar__bottom {
+    flex-direction: row;
+    padding-bottom: 0;
+    padding-right: 1.5rem;
+    justify-content: flex-end;
+    gap: 0;
+    width: auto;
+  }
+
+  .sidebar__divider {
+    width: 1px;
+    height: 72px;
+    margin: 0 0.5rem;
+  }
+}

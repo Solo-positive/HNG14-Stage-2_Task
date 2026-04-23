@@ -1,0 +1,280 @@
+/* ===== Header ===== */
+.list-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.list-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.list-header__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.list-header__count {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.list-header__controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* ===== Filter Dropdown ===== */
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.filter-dropdown__trigger:hover { color: #7c5dfa; }
+
+.filter-dropdown__trigger:focus-visible {
+  outline: 2px solid #7c5dfa;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.filter-dropdown__chevron {
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.filter-dropdown__chevron--open {
+  transform: rotate(180deg);
+}
+
+.filter-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-card);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(72,84,159,0.25);
+  padding: 1.25rem 1.5rem;
+  list-style: none;
+  min-width: 180px;
+  z-index: 50;
+  animation: slideUp 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+}
+
+.filter-option__checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.filter-option__check {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  background: var(--color-input-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.filter-option__checkbox:checked + .filter-option__check {
+  background: #7c5dfa;
+  border-color: #7c5dfa;
+}
+
+.filter-option__checkbox:checked + .filter-option__check::after {
+  content: '';
+  display: block;
+  width: 9px;
+  height: 7px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1.5 4L3.5 6l5-5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.filter-option__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+/* ===== New Invoice Button ===== */
+.btn--new-invoice {
+  background: #7c5dfa;
+  color: #fff;
+  border-radius: 99px;
+  border: none;
+  padding: 0 1.25rem 0 0.4rem;
+  height: 48px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.btn--new-invoice:hover { background: #9277ff; }
+
+.btn--new-invoice:focus-visible {
+  outline: 2px solid #7c5dfa;
+  outline-offset: 3px;
+}
+
+.btn--new-invoice__icon {
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c5dfa;
+  flex-shrink: 0;
+}
+
+/* ===== Invoice List ===== */
+.invoice-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.invoice-list__item {
+  animation: slideUp 0.3s ease both;
+}
+
+/* ===== Invoice Card ===== */
+.invoice-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
+  background: var(--color-card);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+
+.invoice-card:hover {
+  border-color: #7c5dfa;
+  box-shadow: 0 4px 20px rgba(124,93,250,0.1);
+  background: var(--color-card-hover);
+}
+
+.invoice-card:focus-visible {
+  outline: 2px solid #7c5dfa;
+  outline-offset: 2px;
+}
+
+.invoice-card__id {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.invoice-card__hash {
+  color: var(--color-text-muted);
+}
+
+.invoice-card__due {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.invoice-card__client {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.invoice-card__amount {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.invoice-card__arrow {
+  color: #7c5dfa;
+  flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .list-header__title {
+    font-size: 1.5rem;
+  }
+
+  .invoice-card {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0.75rem 1rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .invoice-card__id    { grid-column: 1; grid-row: 1; }
+  .invoice-card__client{ grid-column: 2; grid-row: 1; text-align: right; }
+  .invoice-card__due   { grid-column: 1; grid-row: 2; }
+  .invoice-card__amount{ grid-column: 1; grid-row: 3; }
+  .invoice-card__arrow { grid-column: 2; grid-row: 3; text-align: right; justify-self: end; }
+  .invoice-card > .status-badge { grid-column: 2; grid-row: 2; justify-self: end; }
+}
+
+@media (max-width: 480px) {
+  .list-header {
+    margin-bottom: 2rem;
+  }
+}
